@@ -1,0 +1,135 @@
+(*Digital Inputs*)
+VAR
+	DI_Band_links : BOOL;
+	DI_Band_rechts : BOOL;
+	DI_Koppel_rechts : BOOL;
+	DI_Koppel_links : BOOL;
+	DI_Stopper : BOOL;
+	DI_NOTAUS : BOOL;
+	DI_Drehgeber_1 : BOOL;
+	DI_Drehgeber_2 : BOOL;
+	DI_Start : BOOL;
+	DI_Stop : BOOL;
+	DI_RESET : BOOL;
+	DI_Wahl : BOOL;
+	DI_Ident_1 : BOOL;
+	DI_Ident_2 : BOOL;
+	DI_Ident_3 : BOOL;
+	DI_Ident_4 : BOOL;
+END_VAR
+(*Digitale Ausgänge*)
+VAR
+	DO_Antrieb_rechts : BOOL;
+	DO_Antrieb_links : BOOL;
+	DO_schleichgang : BOOL;
+	DO_Stopper : BOOL;
+	DO_Koppel_links : BOOL;
+	DO_Koppel_rechts : BOOL;
+	DO_gruen : BOOL;
+	DO_weiss : BOOL;
+	DO_Q1 : BOOL;
+	DO_Q2 : BOOL;
+END_VAR
+(*Analoge Eingänge*)
+VAR
+	AI_Potentiometer_1 : INT;
+	AI_Potentiometer_2 : INT;
+END_VAR
+(*IO_Link*)
+VAR
+	RFID_Reader : UDINT;
+END_VAR
+(*Statusvariablen*)
+VAR
+	manual_work_mode_glob : BOOL;
+	auto_mode_glob : USINT;
+	work_state : USINT;
+	foerderband_state : USINT;
+	work_done : BOOL;
+	work_now : BOOL;
+	set_error_state : BOOL := FALSE;
+	error_flag : BOOL := FALSE;
+END_VAR
+(*Timer*)
+VAR CONSTANT
+	time_5_s_timer : INT := 5000;
+	time_blink_slow : INT := 700;
+	time_blink_middle : INT := 375;
+	time_blink_fast : INT := 175;
+	timer_error_stopper_time : INT := 200;
+	timer_error_motor_an_time : INT := 10000;
+	heat_timer_time : INT := 12000;
+	timer_2s_time : INT := 2000;
+END_VAR
+VAR
+	timer_5s : TON := (0);
+	timer_2s : TON;
+	timer_error_stopper : TON;
+	timer_error : TON;
+	timer_blink2 : TON;
+	timer_blink : TON;
+END_VAR
+(*stat_2*)
+VAR
+	DI_Hubzylinder_oben : BOOL;
+	DI_Hubzylinder_unten : BOOL;
+	DI_untere_Klinge : BOOL;
+	DI_obere_Klinge : BOOL;
+	DI_Mag_leer : BOOL;
+	DI_Palette : BOOL;
+	DI_Frontschale : BOOL;
+END_VAR
+(*Ausg*)
+VAR
+	DO_Hubzylinder_auf : BOOL;
+	DO_Hubzylinder_ab : BOOL;
+	DO_Vereinzler_close : BOOL;
+	DO_Vereinzler_open : BOOL;
+	DO_Zylinderklemmung : BOOL;
+END_VAR
+(*stat1*)
+VAR
+	DI_X_axis_links : BOOL;
+	DI_X_axis_recht : BOOL;
+	DI_Frontschale_korr : BOOL;
+	DI_Frontschale_vorh : BOOL;
+	DI_Z_axis_oben : BOOL;
+	DI_Deckel_bereits_vorh : BOOL;
+	DI_Z_axis_unten : BOOL;
+	DO_X_axis_nach_links : BOOL;
+	DO_X_axis_nach_rechts : BOOL;
+	DO_Z_axis_nach_oben : BOOL;
+	DO_Z_axis_nach_unten : BOOL;
+	DO_Z_axis_Klemmung : BOOL;
+	DO_Bohrer1 : BOOL;
+	DO_Bohrer2 : BOOL;
+END_VAR
+(*stat_3*)
+VAR
+	DI_Hubzylinder_unten_stat3 : BOOL;
+	DI_Hubzylinder_oben_stat3 : BOOL;
+	DI_Frontschale_vorhanden : BOOL;
+	DO_Hubzylinder_ab_stat3 : BOOL;
+	DO_Hubzylinder_auf_stat3 : BOOL;
+END_VAR
+(*stat_4*)
+VAR
+	DI_phi_0 : BOOL;
+	DI_phi_180 : BOOL;
+	DI_Greifer_open : BOOL;
+	DI_Greifer_closed : BOOL;
+	DI_phi_4 : BOOL;
+	DI_Stau : BOOL;
+	DI_werkstueck : BOOL;
+	DO_phi_0 : BOOL;
+	DO_phi_180 : BOOL;
+	DO_Greifer_open : BOOL;
+	DO_Greifer_close : BOOL;
+END_VAR
+(*stat_5*)
+VAR
+	DO_Heizung : BOOL := FALSE;
+	DO_Leistung : BOOL := FALSE;
+	AI_Messwandler : INT := 0;
+	AI_Messwandler_2 : INT := 0;
+END_VAR
