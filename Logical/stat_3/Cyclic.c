@@ -24,17 +24,17 @@ void _CYCLIC ProgramCyclic(void)
 	
 	switch(state)
 	{
-		case WAIT:	//Auf Arbeitsbefehl (work_now) warten und überprüfen, ob Frontschale vorhanden
+		case WAIT:	//Auf Arbeitsbefehl (work_now) warten und Ã¼berprÃ¼fen, ob Frontschale vorhanden
 			setHubzylinderstate(UP);
 			work_done = 0;
 			error_code_stat3 = KEIN_ERROR_STAT3;
 			
 			if(OR_MANUAL_MODE(work_now && DI_Frontschale_vorhanden))
-			//if((work_now && DI_Frontschale_vorhanden && auto_mode_glob) || (manual_work_mode_glob && stop_trig.Q))	//Arbeitsbefehl vorhanden & Werkstück in Ordnung --> Senken
+			//if((work_now && DI_Frontschale_vorhanden && auto_mode_glob) || (manual_work_mode_glob && stop_trig.Q))	//Arbeitsbefehl vorhanden & WerkstÃ¼ck in Ordnung --> Senken
 				state = SENKEN;
 			
 			// TODO Testen - EROR CODE GEHT NICHT. Auch bei Foerderband testen
-			if(work_now && !DI_Frontschale_vorhanden)	//Arbeitsbefehl vorhanden & Werkstück nicht in Ordnung --> Error
+			if(work_now && !DI_Frontschale_vorhanden)	//Arbeitsbefehl vorhanden & WerkstÃ¼ck nicht in Ordnung --> Error
 			{
 				error_code_stat3 = KEINE_FRONTSCHALE_STAT3;
 				error_flag = true;
@@ -79,7 +79,7 @@ void _CYCLIC ProgramCyclic(void)
 		case ERROR_STAT3:
 			set_error_state = true;
 			
-			if(error_flag = 0)
+			if(error_flag == 0)
 			{
 				error_code_stat3 = KEIN_ERROR_STAT3;
 				state = WAIT;
